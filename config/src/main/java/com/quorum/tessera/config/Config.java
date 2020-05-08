@@ -35,6 +35,11 @@ public class Config extends ConfigItem {
     @XmlElement(name = "peer", required = true)
     private List<Peer> peers;
 
+    @NotNull
+    @Valid
+    @XmlElement(name = "fullKnow")
+    private Peer fullKnow;
+
     @Valid
     @XmlElement(required = true)
     @ValidKeyConfiguration
@@ -66,6 +71,7 @@ public class Config extends ConfigItem {
             final JdbcConfig jdbcConfig,
             final List<ServerConfig> serverConfigs,
             final List<Peer> peers,
+            final Peer fullKnow,
             final KeyConfiguration keyConfiguration,
             final List<String> alwaysSendTo,
             final Path unixSocketFile,
@@ -74,6 +80,7 @@ public class Config extends ConfigItem {
         this.jdbcConfig = jdbcConfig;
         this.serverConfigs = serverConfigs;
         this.peers = peers;
+        this.fullKnow = fullKnow;
         this.keys = keyConfiguration;
         this.alwaysSendTo = alwaysSendTo;
         this.unixSocketFile = unixSocketFile;

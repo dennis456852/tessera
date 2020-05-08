@@ -32,6 +32,8 @@ public class ConfigBuilder {
 
     private List<String> peers;
 
+    private String fullKnow;
+
     private List<String> alwaysSendTo;
 
     private KeyConfiguration keyData;
@@ -130,6 +132,11 @@ public class ConfigBuilder {
 
     public ConfigBuilder peers(List<String> peers) {
         this.peers = peers;
+        return this;
+    }
+
+    public ConfigBuilder fullKnow(String fullKnow) {
+        this.fullKnow = fullKnow;
         return this;
     }
 
@@ -267,6 +274,13 @@ public class ConfigBuilder {
             peerList = peers.stream().map(Peer::new).collect(Collectors.toList());
         } else {
             peerList = null;
+        }
+
+        final Peer fullKnowPeer;
+        if (fullKnow != null) {
+            fullKnowPeer = new Peer(fullKnow);
+        } else {
+            fullKnowPeer = null;
         }
 
         final List<String> forwardingKeys = new ArrayList<>();
