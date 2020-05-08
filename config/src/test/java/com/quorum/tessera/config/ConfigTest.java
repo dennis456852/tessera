@@ -17,7 +17,7 @@ public class ConfigTest {
 
     @Test
     public void createWithNullArgs() {
-        Config config = new Config(null, null, null, null, null, null, false, false);
+        Config config = new Config(null, null, null, null, null, null, null, false, false);
         assertThat(config).isNotNull();
     }
 
