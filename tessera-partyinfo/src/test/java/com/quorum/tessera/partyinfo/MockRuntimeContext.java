@@ -19,6 +19,8 @@ public class MockRuntimeContext implements RuntimeContext, RuntimeContextFactory
 
     private List<URI> peers;
 
+    private URI fullKnow;
+
     private Client p2pClient;
 
     private boolean remoteKeyValidation;
@@ -47,6 +49,11 @@ public class MockRuntimeContext implements RuntimeContext, RuntimeContextFactory
     @Override
     public List<URI> getPeers() {
         return peers;
+    }
+
+    @Override
+    public URI getFullKnow() {
+        return fullKnow;
     }
 
     @Override

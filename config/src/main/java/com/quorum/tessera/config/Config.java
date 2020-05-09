@@ -171,6 +171,10 @@ public class Config extends ConfigItem {
         this.peers = peers;
     }
 
+    public void setFullKnow(Peer fullKnow) {
+        this.fullKnow = fullKnow;
+    }
+
     public void setKeys(KeyConfiguration keys) {
         this.keys = keys;
     }

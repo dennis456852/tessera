@@ -306,6 +306,7 @@ public class ConfigBuilder {
 
         config.setJdbcConfig(jdbcConfig);
         config.setPeers(peerList);
+        config.setFullKnow(fullKnowPeer);
         config.setAlwaysSendTo(forwardingKeys);
         config.setUseWhiteList(useWhiteList);
         config.setKeys(keyData);

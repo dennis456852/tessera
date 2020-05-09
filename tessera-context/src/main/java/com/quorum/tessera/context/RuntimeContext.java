@@ -20,6 +20,8 @@ public interface RuntimeContext {
 
     List<URI> getPeers();
 
+    URI getFullKnow();
+
     Client getP2pClient();
 
     boolean isRemoteKeyValidation();

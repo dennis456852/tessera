@@ -160,4 +160,19 @@ public class PartyInfoServiceImpl implements PartyInfoService {
 
         LOGGER.info("Published to {}", targetUrl);
     }
+
+    public boolean isFullKnow(final PublicKey recipientKey) {
+        final RuntimeContext runtimeContext = RuntimeContext.getInstance();
+        final Recipient retrievedRecipientFromStore =
+            partyInfoStore.getPartyInfo().getRecipients().stream()
+                .filter(recipient -> recipientKey.equals(recipient.getKey()))
+                .findAny()
+                .orElseThrow(
+                    () ->
+                        new KeyNotFoundException(
+                            "Recipient not found for key: " + recipientKey.encodeToBase64()));
+        final String targetUrl = retrievedRecipientFromStore.getUrl();
+
+        return targetUrl.equals(runtimeContext.getFullKnow().toString());
+    }
 }

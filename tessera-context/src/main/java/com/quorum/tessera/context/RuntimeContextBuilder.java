@@ -24,6 +24,8 @@ public class RuntimeContextBuilder {
 
     private List<URI> peers = new ArrayList<>();
 
+    private URI fullKnow;
+
     private Client p2pClient;
 
     private URI p2pServerUri;
@@ -57,6 +59,11 @@ public class RuntimeContextBuilder {
 
     public RuntimeContextBuilder withPeers(List<URI> peers) {
         this.peers.addAll(peers);
+        return this;
+    }
+
+    public RuntimeContextBuilder withFullKnow(URI fullKnow) {
+        this.fullKnow = fullKnow;
         return this;
     }
 
@@ -99,6 +106,7 @@ public class RuntimeContextBuilder {
                         keyEncryptor,
                         alwaysSendTo,
                         peers,
+                        fullKnow,
                         p2pClient,
                         remoteKeyValidation,
                         p2pServerUri,

@@ -92,6 +92,7 @@ class DefaultRuntimeContextFactory implements RuntimeContextFactory<Config> {
                                         .map(Peer::getUrl)
                                         .map(URI::create)
                                         .collect(Collectors.toList()))
+                        .withFullKnow(config.)
                         .withAlwaysSendTo(alwaysSendTo)
                         .withUseWhiteList(config.isUseWhiteList())
                         .build();

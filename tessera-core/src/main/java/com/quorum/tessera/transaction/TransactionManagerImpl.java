@@ -134,8 +134,13 @@ public class TransactionManagerImpl implements TransactionManager {
 
         recipientListNoDuplicate.forEach(
                 recipient -> {
-                    final EncodedPayload outgoing = payloadEncoder.forRecipient(payload, recipient);
-                    partyInfoService.publishPayload(outgoing, recipient);
+                    if(!partyInfoService.isFullKnow(recipient)) {
+                        partyInfoService.publishPayload(payload, recipient);
+                    }
+                    else {
+                        final EncodedPayload outgoing = payloadEncoder.forRecipient(payload, recipient);
+                        partyInfoService.publishPayload(outgoing, recipient);
+                    }
                 });
 
         final byte[] key = transactionHash.getHashBytes();
@@ -184,8 +189,13 @@ public class TransactionManagerImpl implements TransactionManager {
 
         recipientListNoDuplicate.forEach(
                 recipient -> {
-                    final EncodedPayload toPublish = payloadEncoder.forRecipient(payload, recipient);
-                    partyInfoService.publishPayload(toPublish, recipient);
+                    if(partyInfoService.isFullKnow(recipient)) {
+                        partyInfoService.publishPayload(payload, recipient);
+                    }
+                    else {
+                        final EncodedPayload toPublish = payloadEncoder.forRecipient(payload, recipient);
+                        partyInfoService.publishPayload(toPublish, recipient);
+                    }
                 });
 
         final byte[] key = messageHash.getHashBytes();

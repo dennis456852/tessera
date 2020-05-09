@@ -18,6 +18,8 @@ class DefaultRuntimeContext implements RuntimeContext {
 
     private final List<URI> peers;
 
+    private final URI fullKnow;
+
     private final Client p2pClient;
 
     private final boolean remoteKeyValidation;
@@ -33,6 +35,7 @@ class DefaultRuntimeContext implements RuntimeContext {
             KeyEncryptor keyEncryptor,
             List<PublicKey> alwaysSendTo,
             List<URI> peers,
+            URI fullKnow,
             Client p2pClient,
             boolean remoteKeyValidation,
             URI p2pServerUri,
@@ -63,6 +66,10 @@ class DefaultRuntimeContext implements RuntimeContext {
 
     public List<URI> getPeers() {
         return peers;
+    }
+
+    public URI getFullKnow() {
+        return fullKnow;
     }
 
     public Client getP2pClient() {
