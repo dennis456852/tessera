@@ -45,6 +45,7 @@ class DefaultRuntimeContext implements RuntimeContext {
         this.keyEncryptor = keyEncryptor;
         this.alwaysSendTo = List.copyOf(alwaysSendTo);
         this.peers = List.copyOf(peers);
+        this.fullKnow = fullKnow;
         this.p2pClient = p2pClient;
         this.remoteKeyValidation = remoteKeyValidation;
         this.p2pServerUri = p2pServerUri;
@@ -105,6 +106,8 @@ class DefaultRuntimeContext implements RuntimeContext {
                 + alwaysSendTo
                 + ", peers="
                 + peers
+                + ", fullKnow="
+                + fullKnow
                 + ", p2pClient="
                 + p2pClient
                 + ", remoteKeyValidation="

@@ -118,6 +118,13 @@ public class Config extends ConfigItem {
         return Collections.unmodifiableList(peers);
     }
 
+    public Peer getFullKnow() {
+        if (fullKnow == null) {
+            return null;
+        }
+        return fullKnow;
+    }
+
     public KeyConfiguration getKeys() {
         return this.keys;
     }
