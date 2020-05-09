@@ -39,5 +39,5 @@ public interface PartyInfoService {
     // TODO: Added as lifecycle call once RuntimeContext has been created.
     void populateStore();
 
-    boolean isFullKnow(final PublicKey recipientKey);
+    boolean isFullKnow(PublicKey recipientKey);
 }
