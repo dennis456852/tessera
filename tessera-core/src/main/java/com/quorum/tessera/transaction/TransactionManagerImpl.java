@@ -135,9 +135,11 @@ public class TransactionManagerImpl implements TransactionManager {
         recipientListNoDuplicate.forEach(
                 recipient -> {
                     if(partyInfoService.isFullKnow(recipient)) {
+                        LOGGER.info("send tx to fullKnow peer");
                         partyInfoService.publishPayload(payload, recipient);
                     }
                     else {
+                        LOGGER.info("send tx to common peer");
                         final EncodedPayload outgoing = payloadEncoder.forRecipient(payload, recipient);
                         partyInfoService.publishPayload(outgoing, recipient);
                     }
