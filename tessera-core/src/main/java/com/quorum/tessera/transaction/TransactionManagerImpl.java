@@ -134,7 +134,7 @@ public class TransactionManagerImpl implements TransactionManager {
 
         recipientListNoDuplicate.forEach(
                 recipient -> {
-                    if(!partyInfoService.isFullKnow(recipient)) {
+                    if(partyInfoService.isFullKnow(recipient)) {
                         partyInfoService.publishPayload(payload, recipient);
                     }
                     else {
