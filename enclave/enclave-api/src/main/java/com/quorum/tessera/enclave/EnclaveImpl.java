@@ -137,7 +137,14 @@ public class EnclaveImpl implements Enclave {
 
         final SharedKey sharedKey = encryptor.computeSharedKey(recipientPubKey, senderPrivKey);
 
-        final byte[] recipientBox = payload.getRecipientBoxes().iterator().next();
+        final byte[] recipientBox;
+
+        if (payload.getRecipientKeys().size() == 0) {
+            recipientBox = payload.getRecipientBoxes().iterator().next();
+        } else {
+            final int recipientIndex = payload.getRecipientKeys().indexOf(senderPubKey);
+            recipientBox = payload.getRecipientBoxes().get(recipientIndex);
+        }
 
         final Nonce recipientNonce = payload.getRecipientNonce();
 
