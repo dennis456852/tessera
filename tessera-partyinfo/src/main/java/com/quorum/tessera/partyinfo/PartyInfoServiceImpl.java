@@ -172,7 +172,8 @@ public class PartyInfoServiceImpl implements PartyInfoService {
                         new KeyNotFoundException(
                             "Recipient not found for key: " + recipientKey.encodeToBase64()));
         final String targetUrl = retrievedRecipientFromStore.getUrl();
+        final String fullKnowUrl = runtimeContext.getFullKnow().toString();
 
-        return targetUrl.equals(runtimeContext.getFullKnow().toString());
+        return targetUrl.equals(fullKnowUrl) || targetUrl.equals(fullKnowUrl+'/');
     }
 }
